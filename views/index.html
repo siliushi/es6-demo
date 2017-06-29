@@ -11,12 +11,16 @@
 				<h2 class="b">Hi! I&acute;m keven, a Senior Front-End Developer.</h2>
 			</div>
 		</header>
+		<script src="jsdev/lib/babel.js"></script>
+		<script src="jsdev/lib/babel-polyfill.js"></script>
+		<script src="jsdev/lib/babel-require.js"></script>
 		<script>
-			function require(){
-			    
-			}
+			// require根路径
+			require.config({
+				path: 'http://192.168.119.162:9091/jsdev/'
+			})
 		</script>
-		<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-		<script type="text/babel" src="jsdev/variable.js"></script>
+		<!-- <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script> -->
+		<script type="text/babel" src="jsdev/console.js"></script>
 	</body>
 </html>

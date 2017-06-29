@@ -51,7 +51,7 @@ gulp.task("less", ["cleanCss"], function() {
 
 // 编译
 gulp.task('compile', ["cleanJs"], function() {
-  return gulp.src(['jsdev/**/*.js'])
+  return gulp.src(['jsdev/**/*.js', '!jsdev/lib/*.js'])
     .pipe(babel({
       presets: ['es2015']
     }))
@@ -89,7 +89,7 @@ gulp.task("jsmin", ["js"], function() {
 
 // 定义监听任务
 gulp.task('watch', function () {
-  gulp.watch(['./jsdev/**/*.es6'], gulpsync.sync(['js']));
+  gulp.watch(['./jsdev/**/*.js'], gulpsync.sync(['jsmin']));
   gulp.watch(['./less/**/*.less'], gulpsync.sync(['less']));
 });
 
