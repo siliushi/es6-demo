@@ -65,7 +65,23 @@ gulp.task('js', ['compile'], function() {
     .pipe(gulp.dest('js'));
 });
 
-
+gulp.task("browser", function() {
+  gulp.src('js/**/*.js', {
+    base: 'js'
+  })
+    .pipe(uglify({
+      mangle: true
+    }))
+    .on('error', function(err) {
+        gutil.log('message: ', err.message);
+        gutil.log('fileName: ', err.fileName);
+        gutil.log('lineNumber: ', err.lineNumber);
+        gutil.log('plugin: ', err.plugin);
+        this.end();
+    })
+    .pipe(addHeader())
+    .pipe(gulp.dest('js'));
+});
 
 gulp.task("jsmin", ["js"], function() {
 
